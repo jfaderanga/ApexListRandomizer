@@ -1,0 +1,23 @@
+public static List<SObject> shuffleRecords(List<SObject> records) {
+
+      List<Decimal> indexes = new List<Decimal>();
+      List<SObject> shuffledRecords = new List<SObject>();
+
+      Map<Decimal, SObject> recordToIndex = new Map<Decimal, SObject>();
+
+      for (SObject record : records) {
+
+          Decimal randomIndex = Math.random();
+
+          indexes.add(randomIndex);
+          recordToIndex.put(randomIndex, record);
+      }
+
+      indexes.sort();
+
+      for (Decimal index : indexes) {
+          shuffledRecords.add(recordToIndex.get(index));
+      }
+
+      return shuffledRecords;
+  }
